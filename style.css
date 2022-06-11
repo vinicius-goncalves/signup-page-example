@@ -66,10 +66,6 @@ body {
     float: right;
 }
 
-.input-details small {
-    display: none;
-}
-
 i {
     display: none !important;
 }

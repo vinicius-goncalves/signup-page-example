@@ -5,43 +5,52 @@ const username = document.querySelector('#username')
 const email = document.querySelector('#email')
 const password = document.querySelector('#password')
 
-const validateForm = (element, classToAdd, classToRemove) => {
+const validateForm = (element, classToAdd, classToRemove, errorMessage) => {
     element.parentElement.classList.add(classToAdd)
     element.parentElement.classList.remove(classToRemove)
+    
+    removeErrorMessage(element)
+    setErrorMessage(element, errorMessage)
 }
 
+const setErrorMessage = (element, message) => {
+    const newElement = document.createElement('small')
+    newElement.innerText = message
+    element.parentElement.appendChild(newElement)
+    return newElement
+}
+
+const removeErrorMessage = (element) => {
+    if(element.parentElement.querySelectorAll('small').length > 0) {
+        element.parentElement.querySelector('small').remove()
+    }
+}
 
 formContainer.addEventListener('input', (event) => {
     event.preventDefault()
 
-    if(username.value === '') {
-        validateForm(username, 'wrong', 'correct')
-    }else {
-        validateForm(username, 'correct', 'wrong')
-    }
+    username.value === '' 
+    ? validateForm(username, 'wrong', 'correct', 'Please, insert a valid username')
+    : validateForm(username, 'correct', 'wrong', null)
 
-    if(!email.value.match(/^[a-zA-Z0-9]+@[a-z^A-Z]+\.[a-zA-Z0-9]+$/)) {
-        validateForm(email, 'wrong', 'correct')
-    }else {
-        validateForm(email, 'correct', 'wrong')
-    }
+    !email.value.match(/^[a-zA-Z0-9_]+@[a-z^A-Z]+\.[a-zA-Z0-9]+$/)
+    ? validateForm(email, 'wrong', 'correct', 'Please, insert a valid email')
+    : validateForm(email, 'correct', 'wrong', null)
 
-    if(password.value === '') {
-        validateForm(password, 'wrong', 'correct')
-    }else {
-        validateForm(password, 'correct', 'wrong')
-    }
+    password.value === ''
+    ? validateForm(password, 'wrong', 'correct', 'Please, insert a valid passwrod')
+    : validateForm(password, 'correct', 'wrong', null)
 })
 
 formContainer.addEventListener('submit', (event) => {
     event.preventDefault()
 
-    const x = Array.from(inputDetails)
-    const itemValidation = x.every(item => {
+    const arrayInputDetails = Array.from(inputDetails)
+    const itemValidation = arrayInputDetails.every(item => {
         return item.className.includes('correct')
     })
 
     itemValidation 
-        ? console.log('Todos os items foram validados') 
-        : console.log('Um erro acontecue, verifique os detalhes e tente novamente')
+        ? console.log('All of the items are correct') 
+        : console.log('An error occurred, please try it again')
 })

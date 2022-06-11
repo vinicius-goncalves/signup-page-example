@@ -1,0 +1,105 @@
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root {
+    --color0: #0085fe;
+    --color1: #fff;
+    --color2: #111;
+    --color3: #e8e8e8e8;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Helvetica, sans-serif;
+    background-color: var(--color3);
+}
+
+.details-container {
+    background-color: var(--color1);
+    padding: 25px;
+    margin: 25px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 15px;
+}
+
+.details-container h1 {
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 600px;
+}
+
+.input-details {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    padding: 15px 0;
+}
+
+.input-details input {
+    display: block;
+    width: 100%;
+    border: 1px solid rgba(128, 128, 128, 0.315);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.input-details input:focus {
+    outline: 1px solid var(--color0);
+}
+
+.input-details > span {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-details i, .input-details small {
+    float: right;
+}
+
+.input-details small {
+    display: none;
+}
+
+i {
+    display: none !important;
+}
+
+.correct input {
+    outline: 2px solid #09b93ec9;
+}
+
+.correct .fa-check-circle {
+    margin-top: 10px;
+    color: #09b93ec9;
+    display: block !important;
+}
+
+.wrong input, .wrong input:focus {
+    outline: 2px solid #ff0505b0;
+}
+
+.wrong .fa-exclamation-circle {
+    margin-top: 10px;
+    display: block !important;
+    color: #ff0505b0;
+}
+
+#submit-button {
+    width: 100%;
+    background-color: var(--color0);
+    color: white;
+    outline: none;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+}

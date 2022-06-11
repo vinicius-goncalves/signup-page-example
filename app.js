@@ -5,15 +5,6 @@ const username = document.querySelector('#username')
 const email = document.querySelector('#email')
 const password = document.querySelector('#password')
 
-// inputDetails.forEach(item => {
-//     item.addEventListener('click', (event) => {
-//         if(event.target.id === "username") {
-            
-//         }
-//     })
-// })
-
-
 const validateForm = (element, classToAdd, classToRemove) => {
     element.parentElement.classList.add(classToAdd)
     element.parentElement.classList.remove(classToRemove)
@@ -30,19 +21,15 @@ formContainer.addEventListener('input', (event) => {
     }
 
     if(!email.value.match(/^[a-zA-Z0-9]+@[a-z^A-Z]+\.[a-zA-Z0-9]+$/)) {
-        email.parentElement.classList.remove('correct')
-        email.parentElement.classList.add('wrong')
+        validateForm(email, 'wrong', 'correct')
     }else {
-        email.parentElement.classList.remove('wrong')
-        email.parentElement.classList.add('correct')
+        validateForm(email, 'correct', 'wrong')
     }
 
     if(password.value === '') {
-        password.parentElement.classList.remove('correct')
-        password.parentElement.classList.add('wrong')
+        validateForm(password, 'wrong', 'correct')
     }else {
-        password.parentElement.classList.add('correct')
-        password.parentElement.classList.remove('wrong')
+        validateForm(password, 'correct', 'wrong')
     }
 })
 
